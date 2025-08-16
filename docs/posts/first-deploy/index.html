@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-08-08">
+
+<title>Building my first webapp with shinylive – A Curious Sojourner</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-fc69c27516b785ffb5db61c6a6e66aa6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">A Curious Sojourner</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/bbpi2"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Building my first webapp with <code>shinylive</code></h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">DevOps</div>
+                <div class="quarto-category">GeoData</div>
+                <div class="quarto-category">Shiny</div>
+                <div class="quarto-category">Python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 8, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#building-my-first-webapp" id="toc-building-my-first-webapp" class="nav-link active" data-scroll-target="#building-my-first-webapp"><span class="header-section-number">1</span> Building My First Webapp</a>
+  <ul class="collapse">
+  <li><a href="#the-design-phase" id="toc-the-design-phase" class="nav-link" data-scroll-target="#the-design-phase"><span class="header-section-number">1.1</span> The Design Phase</a>
+  <ul class="collapse">
+  <li><a href="#the-mvp" id="toc-the-mvp" class="nav-link" data-scroll-target="#the-mvp"><span class="header-section-number">1.1.1</span> The MVP</a></li>
+  <li><a href="#the-final-product" id="toc-the-final-product" class="nav-link" data-scroll-target="#the-final-product"><span class="header-section-number">1.1.2</span> The Final Product</a></li>
+  </ul></li>
+  <li><a href="#a-scenic-route-what-is-distance-travelled" id="toc-a-scenic-route-what-is-distance-travelled" class="nav-link" data-scroll-target="#a-scenic-route-what-is-distance-travelled"><span class="header-section-number">1.2</span> A Scenic Route: What is Distance Travelled?</a></li>
+  <li><a href="#sec-approx" id="toc-sec-approx" class="nav-link" data-scroll-target="#sec-approx"><span class="header-section-number">1.3</span> The Approximations</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">1.3.1</span> Data Cleaning</a></li>
+  <li><a href="#method-1-the-match-suburb" id="toc-method-1-the-match-suburb" class="nav-link" data-scroll-target="#method-1-the-match-suburb"><span class="header-section-number">1.3.2</span> Method 1: The Match Suburb</a></li>
+  <li><a href="#method-2-the-closest-surburb" id="toc-method-2-the-closest-surburb" class="nav-link" data-scroll-target="#method-2-the-closest-surburb"><span class="header-section-number">1.3.3</span> Method 2: The Closest Surburb</a></li>
+  <li><a href="#method-3-the-shortest-distance" id="toc-method-3-the-shortest-distance" class="nav-link" data-scroll-target="#method-3-the-shortest-distance"><span class="header-section-number">1.3.4</span> Method 3: The Shortest Distance</a></li>
+  </ul></li>
+  <li><a href="#the-blockers" id="toc-the-blockers" class="nav-link" data-scroll-target="#the-blockers"><span class="header-section-number">1.4</span> The Blockers</a>
+  <ul class="collapse">
+  <li><a href="#blocker-1-running-reactive-on-static-webpages" id="toc-blocker-1-running-reactive-on-static-webpages" class="nav-link" data-scroll-target="#blocker-1-running-reactive-on-static-webpages"><span class="header-section-number">1.4.1</span> Blocker #1: Running Reactive on Static Webpages</a></li>
+  <li><a href="#blocker-2-how-to-geocode" id="toc-blocker-2-how-to-geocode" class="nav-link" data-scroll-target="#blocker-2-how-to-geocode"><span class="header-section-number">1.4.2</span> Blocker #2: How To Geocode?</a></li>
+  <li><a href="#sec-blocker-3" id="toc-sec-blocker-3" class="nav-link" data-scroll-target="#sec-blocker-3"><span class="header-section-number">1.4.3</span> Blocker #3: The Routing Issue</a></li>
+  <li><a href="#blocker-4-reading-in-data" id="toc-blocker-4-reading-in-data" class="nav-link" data-scroll-target="#blocker-4-reading-in-data"><span class="header-section-number">1.4.4</span> Blocker #4: Reading in Data</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">1.5</span> Conclusions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="building-my-first-webapp" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Building My First Webapp</h1>
+<p>As I was planning a road trip with friends, I wondered if there was an easy way to estimate the fuel cost for each individual. Nothing out there seemed to meet the usecase I had, so I decided to build a webapp. What I thought was a quick and easy solution ended up taking ~20hr to develop, but given this was more about pedegogy than perfection, it was time well-spent.</p>
+<p>I began with three important considerations:</p>
+<ul>
+<li>🖥️ <strong>Serverless</strong> - I don’t want to spin up a server just for this - it needs to be hostable on github.</li>
+<li>💰 <strong>Free</strong> - I don’t want to pay for anything, even if I’m adding a credit card to access a “free tier”.</li>
+<li>🚢 <strong>Simple</strong> - I don’t want to spend time on something that won’t be shipped.</li>
+</ul>
+<section id="the-design-phase" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="the-design-phase"><span class="header-section-number">1.1</span> The Design Phase</h2>
+<p>Okay, so at the core of it, I needed an app that took in the following inputs:</p>
+<ul>
+<li><strong>Source Location</strong> - where is the user coming from?</li>
+<li><strong>Number of Pax</strong> - how many people do we split the cost over?</li>
+</ul>
+<p>The destination location is fixed for simplicity since we were all going to the same place for the trip. This will save us some complexity as we will soon see.</p>
+<p>After the user clicks ‘submit’, I want to compute &amp; display:</p>
+<ul>
+<li><strong>Distance Travelled</strong> - there is a degree of ambiguity to this as we will soon see.</li>
+<li><strong>Cost per Pax</strong> - this is the target metric to calculate.</li>
+<li><strong>A map</strong> - maps are fun 🗺️</li>
+</ul>
+<section id="the-mvp" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="the-mvp"><span class="header-section-number">1.1.1</span> The MVP</h3>
+<p>Since this is my first webapp, I am not even sure of the infrastructure needed to build this solution. To make sure the project is feasible, I begin with a cut-down version of the requirements. Suppose the user <em>already</em> provides the <strong>Distance Travelled</strong> (say with a Google Maps search), let’s see if we can calculate the target metric of <strong>Cost per Pax</strong>.</p>
+<p>Let <span class="math inline">\(C\)</span> be the cost per pax measure we want to calculate. Let:</p>
+<ul>
+<li><span class="math inline">\(\epsilon\)</span> be the fuel efficiency. For this we used 0.1 L/km according to <a href="https://www.carsguide.com.au/car-advice/what-is-average-fuel-consumption-88469">carsguide for a typical SUV</a>.</li>
+<li><span class="math inline">\(\varphi\)</span> be the fuel cost per litre. For this we take the estimate of $2.5.</li>
+<li><span class="math inline">\(D\)</span> be the distance travelled in km.</li>
+<li><span class="math inline">\(n\)</span> be the number of pax.</li>
+</ul>
+<p><span class="math display">\[
+C = \frac{\epsilon\varphi D}{n} = \frac{0.25D}{n}
+\]</span></p>
+</section>
+<section id="the-final-product" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="the-final-product"><span class="header-section-number">1.1.2</span> The Final Product</h3>
+<p>In the final product, we want to go one step further and find a way to map between the <strong>Source Location</strong> and the <strong>Distance Travelled</strong>. The generic steps are:</p>
+<ol type="1">
+<li>User provides the source location in text string.</li>
+<li>This text is mapped to a lattitude and longitude.</li>
+<li>The distance between this source location and the destination location is calculated.</li>
+</ol>
+</section>
+</section>
+<section id="a-scenic-route-what-is-distance-travelled" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="a-scenic-route-what-is-distance-travelled"><span class="header-section-number">1.2</span> A Scenic Route: What is Distance Travelled?</h2>
+<p>There is some ambiguity in the definition of <strong>Distance Travelled</strong>.</p>
+<ul>
+<li>For the MVP case, this parameter is provided <em>a priori</em>.</li>
+<li>For the final product case, we need to be able to take a set of two latitude and longitude and generate this.</li>
+</ul>
+<p>There are basically two ways of doing this.</p>
+<p><u>1. Direct Distance</u></p>
+<p>The “Direct Distance” or the “Great Circle Distance” is the distance is the shortest distance between two points on a sphere (we can approximate Earth as a sphere <a href="https://en.wikipedia.org/wiki/Flat_Earth">well enough</a>). This is given by the <a href="https://en.wikipedia.org/wiki/Haversine_formula">Haversine function</a> which takes in the latitude and longitude of two points and returns the distance between them:</p>
+<ul>
+<li>Let <span class="math inline">\(\varphi_1\)</span> and <span class="math inline">\(\varphi_2\)</span> be the latitude of points 1 and 2 respectively.</li>
+<li>Let <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> be the longitude of points 1 and 2 respectively.</li>
+<li>Let <span class="math inline">\(r=6371.0\)</span> be the radius of the Earth in km.</li>
+</ul>
+<p>The distance <span class="math inline">\(d\)</span> between points 1 and 2 are given by: <span class="math display">\[
+d = 2 r \arcsin \left(\sqrt{\frac{1- \cos (\varphi_2-\varphi_1)+\cos\varphi_1 \cos \varphi_2 (1-\cos(\lambda_2-\lambda_1))}{2}} \right)
+\]</span></p>
+<p><u>2. Road Distance</u></p>
+<p>Realistically, road vehicles will likely never take the ‘direct’ distance. The <em>actual</em> distance a car would travel will necessarily be greater than (or equal to) the direct distance. This is the value you get when you put a particular route into Google Maps. However, as we will see in <a href="#sec-blocker-3" class="quarto-xref">Section&nbsp;1.4.3</a>, this is tricky to calculate dynamically according to user input.</p>
+</section>
+<section id="sec-approx" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-approx"><span class="header-section-number">1.3</span> The Approximations</h2>
+<p>To summarise the challenges in calculating the <strong>Distance Travelled</strong>:</p>
+<ul>
+<li>If we use the direct distance, we can under-estimate the actual distance travelled by less than half.</li>
+<li>If we use the road distance, there’s no easy way to dynamically calculate this for each user input.</li>
+</ul>
+<p>To make the necessary approximations, we need two key pieces of contextual information:</p>
+<ul>
+<li>The <strong>Source Location</strong> will likely be somewhere in Metropolitan Victoria, so we don’t need to consider interstate cases.</li>
+<li>It’s okay to be slightly inaccurate as long as we can perform better than baseline (ie. use direct distance).</li>
+</ul>
+<p>Although we cannot dynamically calculate the road distance, it is feasible for us to pre-calculate a set of distances and uses those as reference points to approximate the actual road distance. We can use the <a href="https://openrouteservice.org/">Open Route Service</a> API to compute road distances at a rate of approximately once every 1-2 seconds. The game plan is this:</p>
+<ol type="1">
+<li>Pre-Calculate the road distance from a set of reference locations.</li>
+<li>Dynamically match the user input to one of these reference points.</li>
+<li>Use the reference road distance to impute for the actual road distance.</li>
+</ol>
+<p>As a rule of thumb, the more granular the reference data, the more accurate the imputation. For this project, I’ve opted to do this at the postcode level.</p>
+<section id="data-cleaning" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">1.3.1</span> Data Cleaning</h3>
+<p>Matthew Proctor has <a href="https://www.matthewproctor.com/australian_postcodes#downloadlinks">helpfully</a> compiled a list of postcodes in Australia and their latitude/longitudes. First, we cut down the list to only postcodes relevant to us. We filter by the following Statistical Area level 4 (SA4) to keep only Metropolitan Melbourne postcodes:</p>
+<pre><code>METRO_SA4 = ['Melbourne - Inner', 'Melbourne - Inner East',
+       'Melbourne - Inner South', 'Melbourne - North East',
+       'Melbourne - North West', 'Melbourne - Outer East',
+       'Melbourne - South East', 'Melbourne - West']</code></pre>
+<p>This reduces the list to about 800 entries. With one API hit every 2 seconds, this will take approximately 30 minutes to calculate all the reference distances. Once we have this reference dataset, we can then match the input location to one of these reference points. There are three methods to do this in order of increasing accuracy and computational cost:</p>
+<ol type="1">
+<li>The Matched Suburb.</li>
+<li>The Closest Suburb.</li>
+<li>The Shortest Distance.</li>
+</ol>
+<p>We ultimately used Method 1 in the final product.</p>
+</section>
+<section id="method-1-the-match-suburb" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="method-1-the-match-suburb"><span class="header-section-number">1.3.2</span> Method 1: The Match Suburb</h3>
+<p>When a user provides a location, we extract the postcode from that location:</p>
+<ul>
+<li>If the postcode is found in the reference list, we impute the road distance as the reference distance.</li>
+<li>If the postcode is not found in the reference list, we fallback to using the direct distance and notify the user.</li>
+</ul>
+</section>
+<section id="method-2-the-closest-surburb" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="method-2-the-closest-surburb"><span class="header-section-number">1.3.3</span> Method 2: The Closest Surburb</h3>
+<p>The problem with Method 1 is a location may be in postcode A but actually physically closer to the centroid of postcode B. To mitigate this problem, we can make a slight adjustment to the methodology:</p>
+<ol type="1">
+<li>Calculate the direct distance between the source location and each suburb in the reference list.</li>
+<li>Impute the reference distance of the suburb that is ‘closest’ (minimal direct distance) to the source location.</li>
+</ol>
+<p>The computational cost of this is <span class="math inline">\(\mathcal{O}(n)\)</span> where <span class="math inline">\(n\)</span> is the length of the reference list. Since we are running our compute on browser-side this can be a tricky tradeoff.</p>
+</section>
+<section id="method-3-the-shortest-distance" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="method-3-the-shortest-distance"><span class="header-section-number">1.3.4</span> Method 3: The Shortest Distance</h3>
+<p>The problem with Method 2 is we are not considering <em>direction</em>. Suppose we find that postcode C is the closest match to our source location. If the centroid of postcode C is <em>farther away</em> than the source location from the destination location, we will be <em>over-estimating</em> the road distance. This logic can be applied for the case of <em>under-estimation</em> as well. An adjusted methodology may be:</p>
+<ol type="1">
+<li>Calculate the direct distance between the source location and each suburb <span class="math inline">\(D_{gc}^k\)</span> for suburb <span class="math inline">\(k\)</span> .</li>
+<li>If we let the reference distance from suburb <span class="math inline">\(k\)</span> be <span class="math inline">\(D_{ref}^k\)</span>, then we would like to find <span class="math inline">\(D = \min (D_{gc}^k+D_{ref}^k)\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+</ol>
+<p>This essentially finds the most direct path between the source and destination locations given a set of waypoints that allow us to transition into using road distances rather than direct distances.</p>
+</section>
+</section>
+<section id="the-blockers" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="the-blockers"><span class="header-section-number">1.4</span> The Blockers</h2>
+<p>The most significant, and hence interesting, blockers I faced was around implementation.</p>
+<section id="blocker-1-running-reactive-on-static-webpages" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="blocker-1-running-reactive-on-static-webpages"><span class="header-section-number">1.4.1</span> Blocker #1: Running Reactive on Static Webpages</h3>
+<p>Github pages allowed me to easily host and serve static webpages. However, for this project, I needed to interact with user-input (either putting in a distance value or a location). Typically for reactive apps, you need to have a server to actually handle those computations.</p>
+<p>When running locally, <a href="https://shiny.posit.co"><code>shiny</code></a> is a great tool to build the app. But how do I add that reactive component when I am hosting static webpages? Traditionally, I would have to either host my own server or rent some server to do the calculations.</p>
+<p><strong>Solution:</strong> After extensive <s>research</s> googling, <a href="https://shiny.posit.co/py/get-started/shinylive.html"><code>shinylive</code></a> seems like the perfect solution. Rather than routing through server-side infrastructure, everything is handled on browser-side. Of course there are computational limits to what a browser can handle, but this was good enough for this usecase.</p>
+</section>
+<section id="blocker-2-how-to-geocode" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="blocker-2-how-to-geocode"><span class="header-section-number">1.4.2</span> Blocker #2: How To Geocode?</h3>
+<p>To complete the final product, we need a method to translate between a user’s location input (human language) and the latitude/longitude (machine language). This process is called geocoding. For example:</p>
+<pre><code>input = "Antimatter Factory CERN, Geneva"
+output = [46.23403486205848, 6.046223317575703]</code></pre>
+<p>The <a href="https://pypi.org/project/geopy/"><code>geopy</code></a> library has exactly this capability. However, this was when I naively walked into a perfectly laid trap. You see, <code>geopy</code> works perfectly well locally, so once I verified that, I started building my webapp around using this library. After significant development time, I decided to deploy a version into <code>shinylive</code> to see what it looks like. Here was when things started falling apart.</p>
+<p>You see, <code>shinylive</code> comes with its own set of <a href="https://shiny.posit.co/py/get-started/shinylive.html#python-packages">pre-installed packages</a>. Notably <code>geopy</code>is <strong>NOT</strong> one of them. If you scroll a little more, it does suggest you can install your own packages using <code>micropip</code> which runs off <code>dynode</code>. But after hours of experimentation, I could not get it to work properly.</p>
+<p><strong>Solution:</strong> Looking elsewhere, I found out that actually on the backend, <code>geopy</code> is essentially querying an API called <a href="https://nominatim.org/">Nominatim</a>. And the best part - I can just directly query Nominatim directly! Looking elsewhere would have saved me hours of going down the <code>micropip</code> rabbit hole 🫠</p>
+<p>What did I learn from all of this?</p>
+<ul>
+<li>Packages are really dumb and annoying.</li>
+<li>Sunk cost is real - I should have looked elsewhere far earlier.</li>
+<li>Check if your things work in the <em>actual</em> environment before sinking significant investment into it.</li>
+</ul>
+</section>
+<section id="sec-blocker-3" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="sec-blocker-3"><span class="header-section-number">1.4.3</span> Blocker #3: The Routing Issue</h3>
+<p>The most computationally expensive step of the process is calculating the route between the source and destination locations. As mentioned previously, calculating this dynamically turned out to not be feasible. But why?</p>
+<p>Computing the route between two points requires applying route finding algorithms such as Djiakstra’s algorithm which can be computationally expensive. We can do this several ways:</p>
+<ol type="1">
+<li><strong>Use Google Maps API</strong> - by far the easiest. However Google Maps does cost money to use, so I decided not to do this.</li>
+<li><strong>Run the Route Algorithm</strong> - this a free option with <a href="https://openrouteservice.org/">Open Route Service</a>, but requires heavy computation not suitable to browser. Recall the serverless requirement!</li>
+<li><strong>Use Open Route Service API</strong> - this requires an account sign up which provides a private API key. However, notably this does <strong>NOT</strong> require credit card details.</li>
+</ol>
+<p><strong>Solution:</strong> I decided to go with Option 3. However, if I wanted to dynamically calculate the route according to user input, I would need to somehow expose my private API key to the end user. This is precisely because I am <em>NOT</em> hosting this on a server. That means there are no ways to maintain secrets from the end user.</p>
+<p>This is the key motivator for approximation methods in <a href="#sec-approx" class="quarto-xref">Section&nbsp;1.3</a>.</p>
+</section>
+<section id="blocker-4-reading-in-data" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="blocker-4-reading-in-data"><span class="header-section-number">1.4.4</span> Blocker #4: Reading in Data</h3>
+<p>To apply the approximation method, we need to read in the reference dataset which was pre-populated with road distance calculations. In a local environment, this is trivally done by using <code>pd.read_csv()</code>. However, shinylive deploys its own little container which doesn’t have any access to your environment.</p>
+<p><strong>Solution:</strong> After <a href="github.com/quarto-ext/shinylive/issues/7">some investigation</a> there seems to be two ways of doing it:</p>
+<ul>
+<li>Moving data into the environment in the initialisation (couldn’t get this to work).</li>
+<li>Read directly from a github repo which has the reference data saved (this was selected).</li>
+</ul>
+<p>I opted for the latter which was the final piece of the puzzle.</p>
+</section>
+</section>
+<section id="conclusions" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">1.5</span> Conclusions</h2>
+<p>What did the final product look like? I have deployed a version here that you can check out <a href="../../fuel_calc_app.html#app">here</a></p>
+<p>What did I learn from this experience:</p>
+<ol type="1">
+<li>Don’t get too stuck on a single solution.</li>
+<li>Package management is an awful problem.</li>
+<li>Something is better than nothing.</li>
+</ol>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Notational abuse for brevity’s sake.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
