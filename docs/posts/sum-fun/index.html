@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-08-16">
+<meta name="dcterms.date" content="2025-09-22">
 
-<title>Building my first webapp with shinylive – A Curious Sojourner</title>
+<title>Having Sum Fun – A Curious Sojourner</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,12 +141,12 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Building my first webapp with <code>shinylive</code></h1>
+      <h1 class="title">Having Sum Fun</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">DevOps</div>
-                <div class="quarto-category">GeoData</div>
-                <div class="quarto-category">Shiny</div>
-                <div class="quarto-category">Python</div>
+                <div class="quarto-category">Mathematics</div>
+                <div class="quarto-category">Riemann-Zeta</div>
+                <div class="quarto-category">Analysis</div>
+                <div class="quarto-category">Geometry</div>
               </div>
                   </div>
   </div>
@@ -158,7 +158,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 16, 2025</p>
+        <p class="date">September 22, 2025</p>
       </div>
     </div>
     
@@ -174,30 +174,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#building-my-first-webapp" id="toc-building-my-first-webapp" class="nav-link active" data-scroll-target="#building-my-first-webapp"><span class="header-section-number">1</span> Building My First Webapp</a>
+  <li><a href="#riemann-zeta-function" id="toc-riemann-zeta-function" class="nav-link active" data-scroll-target="#riemann-zeta-function"><span class="header-section-number">1</span> Riemann Zeta Function</a>
   <ul class="collapse">
-  <li><a href="#the-design-phase" id="toc-the-design-phase" class="nav-link" data-scroll-target="#the-design-phase"><span class="header-section-number">1.1</span> The Design Phase</a>
+  <li><a href="#part-i-s-1-the-triangular-numbers" id="toc-part-i-s-1-the-triangular-numbers" class="nav-link" data-scroll-target="#part-i-s-1-the-triangular-numbers"><span class="header-section-number">1.1</span> Part I: <span class="math inline">\(s=-1\)</span>: The Triangular Numbers</a></li>
+  <li><a href="#part-ii-s1-the-harmonic-series" id="toc-part-ii-s1-the-harmonic-series" class="nav-link" data-scroll-target="#part-ii-s1-the-harmonic-series"><span class="header-section-number">1.2</span> Part II: <span class="math inline">\(s=1\)</span>: The Harmonic Series</a></li>
+  <li><a href="#part-iii-s2-the-basel-problem" id="toc-part-iii-s2-the-basel-problem" class="nav-link" data-scroll-target="#part-iii-s2-the-basel-problem"><span class="header-section-number">1.3</span> Part III: <span class="math inline">\(s=2\)</span>: The Basel Problem</a>
   <ul class="collapse">
-  <li><a href="#the-mvp" id="toc-the-mvp" class="nav-link" data-scroll-target="#the-mvp"><span class="header-section-number">1.1.1</span> The MVP</a></li>
-  <li><a href="#the-final-product" id="toc-the-final-product" class="nav-link" data-scroll-target="#the-final-product"><span class="header-section-number">1.1.2</span> The Final Product</a></li>
+  <li><a href="#taylor-expansion" id="toc-taylor-expansion" class="nav-link" data-scroll-target="#taylor-expansion"><span class="header-section-number">1.3.1</span> ➕ Taylor Expansion</a></li>
+  <li><a href="#polynomial-expansion" id="toc-polynomial-expansion" class="nav-link" data-scroll-target="#polynomial-expansion"><span class="header-section-number">1.3.2</span> ✖️ Polynomial Expansion</a></li>
+  <li><a href="#putting-this-together" id="toc-putting-this-together" class="nav-link" data-scroll-target="#putting-this-together"><span class="header-section-number">1.3.3</span> ✨ Putting this together</a></li>
   </ul></li>
-  <li><a href="#a-scenic-route-what-is-distance-travelled" id="toc-a-scenic-route-what-is-distance-travelled" class="nav-link" data-scroll-target="#a-scenic-route-what-is-distance-travelled"><span class="header-section-number">1.2</span> A Scenic Route: What is Distance Travelled?</a></li>
-  <li><a href="#sec-approx" id="toc-sec-approx" class="nav-link" data-scroll-target="#sec-approx"><span class="header-section-number">1.3</span> The Approximations</a>
-  <ul class="collapse">
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">1.3.1</span> Data Cleaning</a></li>
-  <li><a href="#method-1-the-match-suburb" id="toc-method-1-the-match-suburb" class="nav-link" data-scroll-target="#method-1-the-match-suburb"><span class="header-section-number">1.3.2</span> Method 1: The Match Suburb</a></li>
-  <li><a href="#method-2-the-closest-surburb" id="toc-method-2-the-closest-surburb" class="nav-link" data-scroll-target="#method-2-the-closest-surburb"><span class="header-section-number">1.3.3</span> Method 2: The Closest Surburb</a></li>
-  <li><a href="#method-3-the-shortest-distance" id="toc-method-3-the-shortest-distance" class="nav-link" data-scroll-target="#method-3-the-shortest-distance"><span class="header-section-number">1.3.4</span> Method 3: The Shortest Distance</a></li>
   </ul></li>
-  <li><a href="#the-blockers" id="toc-the-blockers" class="nav-link" data-scroll-target="#the-blockers"><span class="header-section-number">1.4</span> The Blockers</a>
-  <ul class="collapse">
-  <li><a href="#blocker-1-running-reactive-on-static-webpages" id="toc-blocker-1-running-reactive-on-static-webpages" class="nav-link" data-scroll-target="#blocker-1-running-reactive-on-static-webpages"><span class="header-section-number">1.4.1</span> Blocker #1: Running Reactive on Static Webpages</a></li>
-  <li><a href="#blocker-2-how-to-geocode" id="toc-blocker-2-how-to-geocode" class="nav-link" data-scroll-target="#blocker-2-how-to-geocode"><span class="header-section-number">1.4.2</span> Blocker #2: How To Geocode?</a></li>
-  <li><a href="#sec-blocker-3" id="toc-sec-blocker-3" class="nav-link" data-scroll-target="#sec-blocker-3"><span class="header-section-number">1.4.3</span> Blocker #3: The Routing Issue</a></li>
-  <li><a href="#blocker-4-reading-in-data" id="toc-blocker-4-reading-in-data" class="nav-link" data-scroll-target="#blocker-4-reading-in-data"><span class="header-section-number">1.4.4</span> Blocker #4: Reading in Data</a></li>
-  </ul></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">1.5</span> Conclusions</a></li>
-  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">2</span> Conclusions</a></li>
   </ul>
 </nav>
     </div>
@@ -208,201 +196,191 @@ window.Quarto = {
 
 
 
-<section id="building-my-first-webapp" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Building My First Webapp</h1>
-<p>As I was planning a road trip with friends, I wondered if there was an easy way to estimate the fuel cost for each individual. Nothing out there seemed to meet the usecase I had, so I decided to build a webapp. What I thought was a quick and easy solution ended up taking ~20hr to develop, but given this was more about pedegogy than perfection, it was time well-spent.</p>
-<p>I began with three important considerations:</p>
-<ul>
-<li>🖥️ <strong>Serverless</strong> - I don’t want to spin up a server just for this - it needs to be hostable on github.</li>
-<li>💰 <strong>Free</strong> - I don’t want to pay for anything, even if I’m adding a credit card to access a “free tier”.</li>
-<li>🚢 <strong>Simple</strong> - I don’t want to spend time on something that won’t be shipped.</li>
-</ul>
-<section id="the-design-phase" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="the-design-phase"><span class="header-section-number">1.1</span> The Design Phase</h2>
-<p>Okay, so at the core of it, I needed an app that took in the following inputs:</p>
-<ul>
-<li><strong>Source Location</strong> - where is the user coming from?</li>
-<li><strong>Number of Pax</strong> - how many people do we split the cost over?</li>
-</ul>
-<p>The destination location is fixed for simplicity since we were all going to the same place for the trip. This will save us some complexity as we will soon see.</p>
-<p>After the user clicks ‘submit’, I want to compute &amp; display:</p>
-<ul>
-<li><strong>Distance Travelled</strong> - there is a degree of ambiguity to this as we will soon see.</li>
-<li><strong>Cost per Pax</strong> - this is the target metric to calculate.</li>
-<li><strong>A map</strong> - maps are fun 🗺️</li>
-</ul>
-<section id="the-mvp" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="the-mvp"><span class="header-section-number">1.1.1</span> The MVP</h3>
-<p>Since this is my first webapp, I am not even sure of the infrastructure needed to build this solution. To make sure the project is feasible, I begin with a cut-down version of the requirements. Suppose the user <em>already</em> provides the <strong>Distance Travelled</strong> (say with a Google Maps search), let’s see if we can calculate the target metric of <strong>Cost per Pax</strong>.</p>
-<p>Let <span class="math inline">\(C\)</span> be the cost per pax measure we want to calculate. Let:</p>
-<ul>
-<li><span class="math inline">\(\epsilon\)</span> be the fuel efficiency. For this we used 0.1 L/km according to <a href="https://www.carsguide.com.au/car-advice/what-is-average-fuel-consumption-88469">carsguide for a typical SUV</a>.</li>
-<li><span class="math inline">\(\varphi\)</span> be the fuel cost per litre. For this we take the estimate of $2.5.</li>
-<li><span class="math inline">\(D\)</span> be the distance travelled in km.</li>
-<li><span class="math inline">\(n\)</span> be the number of pax.</li>
-</ul>
-<p><span class="math display">\[
-C = \frac{\epsilon\varphi D}{n} = \frac{0.25D}{n}
+<p>The concept of reducibility has always fascinated me - the fact that you can take an unbelieveably complex <em>thing</em> and elegantly express it a single <em>thing</em> that can fit on the margins of a page. An interesting example of this is the Riemann Zeta function.</p>
+<section id="riemann-zeta-function" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Riemann Zeta Function</h1>
+<p>The Riemann Zeta function is a behemoth that has been a well-trodden path for centuries of mathematicians. It can expressed so simply: <span class="math display">\[
+\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s} \textrm{  where  } s\in \mathbb{C}
+\]</span></p>
+<p>…and yet so much can be unpacked from it as we shall soon see. Let’s look at different cases of <span class="math inline">\(s\in \mathbb{Z}\)</span> to see if we can find any insights. Here we assume only the basic laws of arithmetic (ie. no complex analysis and hence no analytic continuation).</p>
+<p>If <span class="math inline">\(s \leq 0\)</span>, we are either adding the same number or a bigger number forever. There is no way the final sum can be finite, so we say the series <em>diverges</em> in this case <span class="math inline">\(\zeta \to \infty\)</span>.</p>
+<p>If <span class="math inline">\(s &gt; 0\)</span>, we are adding smaller and smaller numbers forever. This is a bit more tricky. If the numbers get <em>small</em> enough <em>fast</em> enough, then we expect the final sum to converge to something finite. Otherwise it will diverge.</p>
+<p>Let’s get a feel for this by considering the cases: <span class="math inline">\(s=-1,1,2\)</span>.</p>
+<section id="part-i-s-1-the-triangular-numbers" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="part-i-s-1-the-triangular-numbers"><span class="header-section-number">1.1</span> Part I: <span class="math inline">\(s=-1\)</span>: The Triangular Numbers</h2>
+<p>For <span class="math inline">\(s=-1\)</span>: <span class="math display">\[
+\zeta(-1) = 1 + 2 + 3 + 4 + \dots
+\]</span> We already know this series will diverge, so that’s boring. Let’s think about something less trivial. Rather than add numbers up forever, we only add up to the number <span class="math inline">\(N\)</span>. We call this a <em>partial</em> sum <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: <span class="math display">\[
+\zeta_N(-1) = \sum_{n=1}^N \frac{1}{n^{(-1)}}=1+2+3+\dots + N
+\]</span> Obviously we can calculate this by simply adding every number up until <span class="math inline">\(N\)</span>, but can we find a shortcut to do this computation? Let’s try get some intuition by writing down the first few values of <span class="math inline">\(N\)</span>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(N\)</span></th>
+<th><span class="math inline">\(\zeta_N(-1)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>6</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>It may not be obvious, but there is a pattern here. The result is what’s called the “Triangular Numbers” (<span class="math inline">\(T_N\)</span>). The namesake is clear from the following diagram:</p>
+<div id="fig-elephant" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="triangular_numbers.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-elephant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Triangular Numbers (By <a href="//commons.wikimedia.org/wiki/User:Melchoir" title="User:Melchoir">Melchoir</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="https://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=16942149">Link</a>)
+</figcaption>
+</figure>
+</div>
+<p>How do we figure out the formula for <span class="math inline">\(T_N\)</span>? We do this by making a rectangle with dimension <span class="math inline">\(N \times (N+1)\)</span>, and then noting that the triangular numbers are always half of this rectangle.</p>
+<p>For <span class="math inline">\(N=2\)</span>, we make a <span class="math inline">\(2\times3=6\)</span> rectangle, and note that <span class="math inline">\(T_2 =3\)</span>.</p>
+<p>For <span class="math inline">\(N=3\)</span>, we make a <span class="math inline">\(3\times4=12\)</span> rectangle, and note that <span class="math inline">\(T_3 = 6\)</span>.</p>
+<p>For <span class="math inline">\(N=4\)</span>, we make a <span class="math inline">\(4\times 5 = 20\)</span> rectangle, and note that <span class="math inline">\(T_4=10\)</span>.</p>
+<p>So we propose a formula: <span class="math display">\[
+T_N = \zeta_N (-1) = \frac{N(N+1)}{2}
+\]</span> We have shown this is true for the first few values of <span class="math inline">\(N\)</span>, but how do we know this is <em>always</em> true? We can prove this by induction.</p>
+<p>For the base case of <span class="math inline">\(N=1\)</span>, we know that <span class="math inline">\(T_1=1\)</span>.</p>
+<p>Let’s assume the formula is true for the case <span class="math inline">\(T_k\)</span>, so we have: <span class="math display">\[
+T_k = \frac{k(k+1)}{2}
+\]</span> What about <span class="math inline">\(T_{k+1}\)</span>? Well let’s see what we get when we add <span class="math inline">\(k+1\)</span> to the above: <span class="math display">\[
+\begin{align*}
+T_{k+1} &amp;= \frac{k(k+1)}{2} + (k+1) \\
+&amp;= \frac{k(k+1)+2(k+1)}{2} \\
+&amp;= \frac{(k+1)(k+2)}{2} \\  
+&amp;= \frac{(k+1)((k+1)+1)}{2}
+\end{align*}
+\]</span> We never assumed the formula was true for <span class="math inline">\(T_{k+1}\)</span>, but we stumbled on the formula for that case by just taking <span class="math inline">\(T_{k}\)</span> and adding <span class="math inline">\(k+1\)</span> to it! Since I never specified what <span class="math inline">\(k\)</span> was, we know this logic is true for <em>any</em> <span class="math inline">\(k \in \mathbb{N}\)</span>. If <span class="math inline">\(k=1\)</span>, then we know the formula holds true for <span class="math inline">\(k=2\)</span>. If we know the formala holds true for <span class="math inline">\(k=2\)</span>, it must also hold true for <span class="math inline">\(k=3\)</span>. So we have proven this fomula is true in general <span class="math inline">\(\forall k \in \mathbb{N}\)</span> how neat is that!</p>
+<p>This means we don’t need to keep adding terms to compute <span class="math inline">\(T_N\)</span>. We just need to apply the formula! For example: <span class="math display">\[
+T_{1000} = \frac{1000(1000+1)}{2} = 500500
 \]</span></p>
 </section>
-<section id="the-final-product" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="the-final-product"><span class="header-section-number">1.1.2</span> The Final Product</h3>
-<p>In the final product, we want to go one step further and find a way to map between the <strong>Source Location</strong> and the <strong>Distance Travelled</strong>. The generic steps are:</p>
-<ol type="1">
-<li>User provides the source location in text string.</li>
-<li>This text is mapped to a lattitude and longitude.</li>
-<li>The distance between this source location and the destination location is calculated.</li>
-</ol>
-</section>
-</section>
-<section id="a-scenic-route-what-is-distance-travelled" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="a-scenic-route-what-is-distance-travelled"><span class="header-section-number">1.2</span> A Scenic Route: What is Distance Travelled?</h2>
-<p>There is some ambiguity in the definition of <strong>Distance Travelled</strong>.</p>
-<ul>
-<li>For the MVP case, this parameter is provided <em>a priori</em>.</li>
-<li>For the final product case, we need to be able to take a set of two latitude and longitude and generate this.</li>
-</ul>
-<p>There are basically two ways of doing this.</p>
-<p><u>1. Direct Distance</u></p>
-<p>The “Direct Distance” or the “Great Circle Distance” is the distance is the shortest distance between two points on a sphere (we can approximate Earth as a sphere <a href="https://en.wikipedia.org/wiki/Flat_Earth">well enough</a>). This is given by the <a href="https://en.wikipedia.org/wiki/Haversine_formula">Haversine function</a> which takes in the latitude and longitude of two points and returns the distance between them:</p>
-<ul>
-<li>Let <span class="math inline">\(\varphi_1\)</span> and <span class="math inline">\(\varphi_2\)</span> be the latitude of points 1 and 2 respectively.</li>
-<li>Let <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> be the longitude of points 1 and 2 respectively.</li>
-<li>Let <span class="math inline">\(r=6371.0\)</span> be the radius of the Earth in km.</li>
-</ul>
-<p>The distance <span class="math inline">\(d\)</span> between points 1 and 2 are given by: <span class="math display">\[
-d = 2 r \arcsin \left(\sqrt{\frac{1- \cos (\varphi_2-\varphi_1)+\cos\varphi_1 \cos \varphi_2 (1-\cos(\lambda_2-\lambda_1))}{2}} \right)
+<section id="part-ii-s1-the-harmonic-series" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="part-ii-s1-the-harmonic-series"><span class="header-section-number">1.2</span> Part II: <span class="math inline">\(s=1\)</span>: The Harmonic Series</h2>
+<p>For <span class="math inline">\(s=1\)</span>: <span class="math display">\[
+\zeta(1) = 1 +\frac{1}{2} + \frac{1}{3} + \frac{1}{4} + ...
+\]</span> This is called the “Harmonic Series” because it represents the wavelengths of harmonics in music. If the fundamental wavelength is <span class="math inline">\(1\)</span>, then the wavelength of the next harmonic is half, then the next is a third and so on.</p>
+<p>We can see each term in our sum getting smaller and smaller. But does it get <em>small</em> enough <em>fast</em> enough? Let’s have a look:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-harmonic-partial-sum" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-harmonic-partial-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-harmonic-partial-sum-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-harmonic-partial-sum-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: First N=1000 values of the harmonic series partial sum.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>It looks like it’s flattening out to some finite value… but looks can be deceiving. This series actually diverges! It diverges really really slowly, but nonetheless it diverges. Let’s prove that shall we? Ignoring the first two terms, let’s start by grouping by <span class="math inline">\(2^n\)</span>. That is, twos, fours, eights etc. <span class="math display">\[
+\zeta(1) = 1 + \frac{1}{2} + \left( \frac{1}{3} +  \frac{1}{4} \right) + \left( \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} \right) + ...
+\]</span> We notice something intriguing. Each group is slightly bigger than half.</p>
+<p>For our first parenthesis: <span class="math display">\[
+\left( \frac{1}{3} +  \frac{1}{4} \right) &gt; \left( \frac{1}{4} +  \frac{1}{4} \right) = \frac{1}{2}
+\]</span> For our second parenthesis: <span class="math display">\[
+\left( \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} \right) &gt; \left( \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} \right) = \frac{1}{2}
+\]</span> If we put this together: <span class="math display">\[
+\zeta(1) &gt; 1 + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + ... \to \infty \quad \therefore \quad \zeta(1) \to \infty
 \]</span></p>
-<p><u>2. Road Distance</u></p>
-<p>Realistically, road vehicles will likely never take the ‘direct’ distance. The <em>actual</em> distance a car would travel will necessarily be greater than (or equal to) the direct distance. This is the value you get when you put a particular route into Google Maps. However, as we will see in <a href="#sec-blocker-3" class="quarto-xref">Section&nbsp;1.4.3</a>, this is tricky to calculate dynamically according to user input.</p>
-</section>
-<section id="sec-approx" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="sec-approx"><span class="header-section-number">1.3</span> The Approximations</h2>
-<p>To summarise the challenges in calculating the <strong>Distance Travelled</strong>:</p>
 <ul>
-<li>If we use the direct distance, we can under-estimate the actual distance travelled by less than half.</li>
-<li>If we use the road distance, there’s no easy way to dynamically calculate this for each user input.</li>
+<li>The sum of adding <span class="math inline">\(\frac{1}{2}\)</span> is <em>smaller</em> than the Harmonic series.</li>
+<li>If you add the same number over and over again forever, your sum will diverge.</li>
+<li>Since a <em>smaller</em> series diverges, the <em>bigger</em> series (ie. Harmonic Series) has to diverges.</li>
 </ul>
-<p>To make the necessary approximations, we need two key pieces of contextual information:</p>
+<p>Congratulations, you just used the creatively named comparison test to prove the Harmonic Series diverges 🥳 But it turns out this is the limit! Any smaller and your series will converge! So <span class="math inline">\(\zeta(s)\)</span> is actually finite for <span class="math inline">\(s&gt;1\)</span>.</p>
+</section>
+<section id="part-iii-s2-the-basel-problem" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="part-iii-s2-the-basel-problem"><span class="header-section-number">1.3</span> Part III: <span class="math inline">\(s=2\)</span>: The Basel Problem</h2>
+<p>For <span class="math inline">\(s=2\)</span>: <span class="math display">\[
+\zeta(2) = 1 +\frac{1}{4} + \frac{1}{9} + \frac{1}{16} + ...
+\]</span> I mentioned (without proof), we expect this to converge. But what does it converge to? This is historically called the “Basel <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Problem” which none other than the famous Lenoard Euler himself solved.</p>
+<p>This proof is quite beautiful and takes us on a scenic route by expanding <span class="math inline">\(g(x)=\frac{\sin(x)}{x}\)</span>. We will expand this function in two different ways and then when we put it together, <span class="math inline">\(\zeta(2)\)</span> magically falls out 🪄</p>
+<section id="taylor-expansion" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="taylor-expansion"><span class="header-section-number">1.3.1</span> ➕ Taylor Expansion</h3>
+<p>The Taylor expansion gives us a way to approximate any function<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, by taking an infinite <strong>SUM</strong> of polynomials. The Taylor expansion of the function <span class="math inline">\(f(x)\)</span> around the point <span class="math inline">\(x=0\)</span> is: <span class="math display">\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n = f(0) + f'(0)x + \frac{f''(0)}{2} x^2 + \dots
+\]</span></p>
+<p>If we take a Talyor expansion of <span class="math inline">\(g(x)\)</span>: <span class="math display">\[
+\begin{align*}
+\sin(x) &amp;= x - \frac{x^3}{3!} + \frac{x^5}{5!} + \dots \\
+g(x) = \frac{\sin(x)}{x} &amp;= 1 - \frac{x^2}{3!} + \frac{x^4}{5!} + \dots
+\end{align*}
+\]</span></p>
+<p>We’ll come back to this.</p>
+</section>
+<section id="polynomial-expansion" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="polynomial-expansion"><span class="header-section-number">1.3.2</span> ✖️ Polynomial Expansion</h3>
+<p>If we take a polynomial (even if it’s a infinite one), we can re-express that as an infinite <strong>PRODUCT</strong> of all its roots. This is called the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_algebra">Fundamental Theorem of Algebra</a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Now we know when <span class="math inline">\(\sin(x)=0\)</span> then <span class="math inline">\(x=\pm\pi, \pm 2\pi, \dots\)</span>, so: <span class="math display">\[
+\begin{align*}
+\sin(x) &amp;= \left(x-\pi\right)\left(x+\pi\right)\left(x-2\pi\right)\left(x+2\pi\right) \dots \\
+g(x) = \frac{\sin(x)}{x} &amp;= \left(1-\frac{x}{\pi}\right)\left(1+\frac{x}{\pi}\right)\left(1-\frac{x}{2\pi}\right)\left(1+\frac{x}{2\pi}\right) \dots
+\end{align*}
+\]</span> Let’s collect all the <span class="math inline">\(x^2\)</span> terms. How do we go about doing this? Here are a few points of intuition:</p>
 <ul>
-<li>The <strong>Source Location</strong> will likely be somewhere in Metropolitan Victoria, so we don’t need to consider interstate cases.</li>
-<li>It’s okay to be slightly inaccurate as long as we can perform better than baseline (ie. use direct distance).</li>
+<li>When expanding the sum, we need to take either the left (<span class="math inline">\(1\)</span>) or the right (<span class="math inline">\(-\frac{x}{\pi}\)</span>) term.</li>
+<li>For any <span class="math inline">\(x^2\)</span> terms, you must take 2 right terms and the rest left.</li>
+<li>Since this is a symmetric function, any choice of the 2 right terms that don’t match (eg. <span class="math inline">\(-\frac{x}{\pi}\)</span> and <span class="math inline">\(-\frac{x}{2\pi}\)</span>) will have a counterpart and cancel out.</li>
+<li>The only terms remaining is if the 2 right terms DO match.</li>
 </ul>
-<p>Although we cannot dynamically calculate the road distance, it is feasible for us to pre-calculate a set of distances and uses those as reference points to approximate the actual road distance. We can use the <a href="https://openrouteservice.org/">Open Route Service</a> API to compute road distances at a rate of approximately once every 1-2 seconds. The game plan is this:</p>
-<ol type="1">
-<li>Pre-Calculate the road distance from a set of reference locations.</li>
-<li>Dynamically match the user input to one of these reference points.</li>
-<li>Use the reference road distance to impute for the actual road distance.</li>
-</ol>
-<p>As a rule of thumb, the more granular the reference data, the more accurate the imputation. For this project, I’ve opted to do this at the postcode level.</p>
-<section id="data-cleaning" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">1.3.1</span> Data Cleaning</h3>
-<p>Matthew Proctor has <a href="https://www.matthewproctor.com/australian_postcodes#downloadlinks">helpfully</a> compiled a list of postcodes in Australia and their latitude/longitudes. First, we cut down the list to only postcodes relevant to us. We filter by the following Statistical Area level 4 (SA4) to keep only Metropolitan Melbourne postcodes:</p>
-<pre><code>METRO_SA4 = ['Melbourne - Inner', 'Melbourne - Inner East',
-       'Melbourne - Inner South', 'Melbourne - North East',
-       'Melbourne - North West', 'Melbourne - Outer East',
-       'Melbourne - South East', 'Melbourne - West']</code></pre>
-<p>This reduces the list to about 800 entries. With one API hit every 2 seconds, this will take approximately 30 minutes to calculate all the reference distances. Once we have this reference dataset, we can then match the input location to one of these reference points. There are three methods to do this in order of increasing accuracy and computational cost:</p>
-<ol type="1">
-<li>The Matched Suburb.</li>
-<li>The Closest Suburb.</li>
-<li>The Shortest Distance.</li>
-</ol>
-<p>We ultimately used Method 1 in the final product.</p>
+<p>Using this intuition, our sum simplifies to : <span class="math display">\[
+\begin{align*}
+g(x) = 1 - \left(\frac{1}{\pi^2} + \frac{1}{4\pi^2} + \frac{1}{9\pi^2} + \dots \right)x^2 + \dots
+\end{align*}
+\]</span></p>
+<p>Oooo do you see that? Does that look familiar? We’re almost there 💪</p>
 </section>
-<section id="method-1-the-match-suburb" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="method-1-the-match-suburb"><span class="header-section-number">1.3.2</span> Method 1: The Match Suburb</h3>
-<p>When a user provides a location, we extract the postcode from that location:</p>
-<ul>
-<li>If the postcode is found in the reference list, we impute the road distance as the reference distance.</li>
-<li>If the postcode is not found in the reference list, we fallback to using the direct distance and notify the user.</li>
-</ul>
-</section>
-<section id="method-2-the-closest-surburb" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="method-2-the-closest-surburb"><span class="header-section-number">1.3.3</span> Method 2: The Closest Surburb</h3>
-<p>The problem with Method 1 is a location may be in postcode A but actually physically closer to the centroid of postcode B. To mitigate this problem, we can make a slight adjustment to the methodology:</p>
-<ol type="1">
-<li>Calculate the direct distance between the source location and each suburb in the reference list.</li>
-<li>Impute the reference distance of the suburb that is ‘closest’ (minimal direct distance) to the source location.</li>
-</ol>
-<p>The computational cost of this is <span class="math inline">\(\mathcal{O}(n)\)</span> where <span class="math inline">\(n\)</span> is the length of the reference list. Since we are running our compute on browser-side this can be a tricky tradeoff.</p>
-</section>
-<section id="method-3-the-shortest-distance" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="method-3-the-shortest-distance"><span class="header-section-number">1.3.4</span> Method 3: The Shortest Distance</h3>
-<p>The problem with Method 2 is we are not considering <em>direction</em>. Suppose we find that postcode C is the closest match to our source location. If the centroid of postcode C is <em>farther away</em> than the source location from the destination location, we will be <em>over-estimating</em> the road distance. This logic can be applied for the case of <em>under-estimation</em> as well. An adjusted methodology may be:</p>
-<ol type="1">
-<li>Calculate the direct distance between the source location and each suburb <span class="math inline">\(D_{gc}^k\)</span> for suburb <span class="math inline">\(k\)</span> .</li>
-<li>If we let the reference distance from suburb <span class="math inline">\(k\)</span> be <span class="math inline">\(D_{ref}^k\)</span>, then we would like to find <span class="math inline">\(D = \min (D_{gc}^k+D_{ref}^k)\)</span> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
-</ol>
-<p>This essentially finds the most direct path between the source and destination locations given a set of waypoints that allow us to transition into using road distances rather than direct distances.</p>
+<section id="putting-this-together" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="putting-this-together"><span class="header-section-number">1.3.3</span> ✨ Putting this together</h3>
+<p>If we match the <span class="math inline">\(x^2\)</span> term from our two methods we get: <span class="math display">\[
+\begin{align*}
+-\left( \frac{1}{\pi^2} + \frac{1}{4\pi^2} + \frac{1}{9\pi^2} + \dots \right) &amp;= -\frac{1}{3!} \\
+\left( 1 + \frac{1}{4} + \frac{1}{9} + \dots \right) \frac{1}{\pi^2} &amp;= \frac{1}{3!}  \\
+1 + \frac{1}{4} + \frac{1}{9} + \dots  &amp;= -\frac{\pi^2}{6}
+\end{align*}
+\]</span></p>
+<p>But wait, the left handside is exactly <span class="math inline">\(s=2\)</span> case! So we have basically proved: <span class="math display">\[
+\zeta(2) = \frac{\pi}{6}
+\]</span></p>
+<p>What just happened? By relating the Taylor expansion of <span class="math inline">\(\frac{\sin(x)}{x}\)</span> with its roots, we have found <span class="math inline">\(\zeta(2)\)</span> embedded in the coefficients. Moreover, we just related the mathematics of infinite series (analysis) with the mathematics of circles (geometry) where the <span class="math inline">\(\pi\)</span> comes from. Isn’t that just so COOL? Being able to find a connection in an unlikely place.</p>
+<p>It turns out that for cases where <span class="math inline">\(s\)</span> is a positive even integer, a generalised method can be used to find the formula for those case.</p>
 </section>
 </section>
-<section id="the-blockers" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="the-blockers"><span class="header-section-number">1.4</span> The Blockers</h2>
-<p>The most significant, and hence interesting, blockers I faced was around implementation.</p>
-<section id="blocker-1-running-reactive-on-static-webpages" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="blocker-1-running-reactive-on-static-webpages"><span class="header-section-number">1.4.1</span> Blocker #1: Running Reactive on Static Webpages</h3>
-<p>Github pages allowed me to easily host and serve static webpages. However, for this project, I needed to interact with user-input (either putting in a distance value or a location). Typically for reactive apps, you need to have a server to actually handle those computations.</p>
-<p>When running locally, <a href="https://shiny.posit.co"><code>shiny</code></a> is a great tool to build the app. But how do I add that reactive component when I am hosting static webpages? Traditionally, I would have to either host my own server or rent some server to do the calculations.</p>
-<p><strong>Solution:</strong> After extensive <s>research</s> googling, <a href="https://shiny.posit.co/py/get-started/shinylive.html"><code>shinylive</code></a> seems like the perfect solution. Rather than routing through server-side infrastructure, everything is handled on browser-side. Of course there are computational limits to what a browser can handle, but this was good enough for this usecase.</p>
 </section>
-<section id="blocker-2-how-to-geocode" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="blocker-2-how-to-geocode"><span class="header-section-number">1.4.2</span> Blocker #2: How To Geocode?</h3>
-<p>To complete the final product, we need a method to translate between a user’s location input (human language) and the latitude/longitude (machine language). This process is called geocoding. For example:</p>
-<pre><code>input = "Antimatter Factory CERN, Geneva"
-output = [46.23403486205848, 6.046223317575703]</code></pre>
-<p>The <a href="https://pypi.org/project/geopy/"><code>geopy</code></a> library has exactly this capability. However, this was when I naively walked into a perfectly laid trap. You see, <code>geopy</code> works perfectly well locally, so once I verified that, I started building my webapp around using this library. After significant development time, I decided to deploy a version into <code>shinylive</code> to see what it looks like. Here was when things started falling apart.</p>
-<p>You see, <code>shinylive</code> comes with its own set of <a href="https://shiny.posit.co/py/get-started/shinylive.html#python-packages">pre-installed packages</a>. Notably <code>geopy</code>is <strong>NOT</strong> one of them. If you scroll a little more, it does suggest you can install your own packages using <code>micropip</code> which runs off <code>dynode</code>. But after hours of experimentation, I could not get it to work properly.</p>
-<p><strong>Solution:</strong> Looking elsewhere, I found out that actually on the backend, <code>geopy</code> is essentially querying an API called <a href="https://nominatim.org/">Nominatim</a>. And the best part - I can just directly query Nominatim directly! Looking elsewhere would have saved me hours of going down the <code>micropip</code> rabbit hole 🫠</p>
-<p>What did I learn from all of this?</p>
-<ul>
-<li>Packages are really dumb and annoying.</li>
-<li>Sunk cost is real - I should have looked elsewhere far earlier.</li>
-<li>Check if your things work in the <em>actual</em> environment before sinking significant investment into it.</li>
-</ul>
-</section>
-<section id="sec-blocker-3" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="sec-blocker-3"><span class="header-section-number">1.4.3</span> Blocker #3: The Routing Issue</h3>
-<p>The most computationally expensive step of the process is calculating the route between the source and destination locations. As mentioned previously, calculating this dynamically turned out to not be feasible. But why?</p>
-<p>Computing the route between two points requires applying route finding algorithms such as Djiakstra’s algorithm which can be computationally expensive. We can do this several ways:</p>
-<ol type="1">
-<li><strong>Use Google Maps API</strong> - by far the easiest. However Google Maps does cost money to use, so I decided not to do this.</li>
-<li><strong>Run the Route Algorithm</strong> - this a free option with <a href="https://openrouteservice.org/">Open Route Service</a>, but requires heavy computation not suitable to browser. Recall the serverless requirement!</li>
-<li><strong>Use Open Route Service API</strong> - this requires an account sign up which provides a private API key. However, notably this does <strong>NOT</strong> require credit card details.</li>
-</ol>
-<p><strong>Solution:</strong> I decided to go with Option 3. However, if I wanted to dynamically calculate the route according to user input, I would need to somehow expose my private API key to the end user. This is precisely because I am <em>NOT</em> hosting this on a server. That means there are no ways to maintain secrets from the end user.</p>
-<p>This is the key motivator for approximation methods in <a href="#sec-approx" class="quarto-xref">Section&nbsp;1.3</a>.</p>
-</section>
-<section id="blocker-4-reading-in-data" class="level3" data-number="1.4.4">
-<h3 data-number="1.4.4" class="anchored" data-anchor-id="blocker-4-reading-in-data"><span class="header-section-number">1.4.4</span> Blocker #4: Reading in Data</h3>
-<p>To apply the approximation method, we need to read in the reference dataset which was pre-populated with road distance calculations. In a local environment, this is trivally done by using <code>pd.read_csv()</code>. However, shinylive deploys its own little container which doesn’t have any access to your environment.</p>
-<p><strong>Solution:</strong> After <a href="github.com/quarto-ext/shinylive/issues/7">some investigation</a> there seems to be two ways of doing it:</p>
-<ul>
-<li>Moving data into the environment in the initialisation (couldn’t get this to work).</li>
-<li>Read directly from a github repo which has the reference data saved (this was selected).</li>
-</ul>
-<p>I opted for the latter which was the final piece of the puzzle.</p>
-</section>
-</section>
-<section id="conclusions" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="conclusions"><span class="header-section-number">1.5</span> Conclusions</h2>
-<p>What did the final product look like? I have deployed a version here that you can check out <a href="../../posts/first-deploy/fuel_calc_app.html#app">here</a></p>
-<p>What did I learn from this experience:</p>
-<ol type="1">
-<li>Don’t get too stuck on a single solution.</li>
-<li>Package management is an awful problem.</li>
-<li>Something is better than nothing.</li>
-</ol>
+<section id="conclusions" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conclusions</h1>
+<p>We have barely scratched the surface of Riemann Zeta functions. We looked at the <span class="math inline">\(s=-1\)</span> case where we found triangular numbers. Then we looked at <span class="math inline">\(s=1\)</span> where we proved the harmonic series diverges. Finally we followed the elegant path of Euler in deriving the value for the <span class="math inline">\(s=2\)</span> case.</p>
 
 
-</section>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Notational abuse for brevity’s sake.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Here a sum is typically assumed to be infinitely long unless otherwise stated.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Presumably named after Basel, Switzerland where the problem was posed.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Assuming it’s well-behaved enough… I’m looking at you <a href="https://en.wikipedia.org/wiki/Weierstrass_function">Weierstrass</a>. It basically needs to be differentiable.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>I mean kind of, it’s more of a corollary to this but close enough.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
