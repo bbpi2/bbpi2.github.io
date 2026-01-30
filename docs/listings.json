@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/classical-mechanics/index.html",
       "/posts/sum-fun/index.html",
       "/posts/first-shiny-app/index.html"
     ]
